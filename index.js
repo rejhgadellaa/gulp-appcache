@@ -1,12 +1,12 @@
 
 var crypto = require('crypto'),
     es = require('event-stream'),
-    log = require('log'),
+    log = require('fancy-log'),
     path = require('path'),
     pluginError = require('plugin-error'),
     slash = require('slash'),
     through = require('through'),
-    vinyl = require('vinyl'),
+    Vinyl = require('vinyl'),
     lineBreak = '\n';
 
 function manifest(options) {
@@ -87,7 +87,7 @@ function manifest(options) {
       cwd: cwd,
       base: cwd,
       path: path.join(cwd, filename),
-      contents: new Buffer(contents.join(lineBreak))
+      contents: new Buffer.from(contents.join(lineBreak))
     });
 
     this.emit('data', manifestFile);
